@@ -1,11 +1,10 @@
-# 姓名：[你的姓名]
+# 姓名：zhangsj
 
 ## 联系信息
 
 - 邮箱：[你的邮箱]
-- 手机：[你的手机号码]
 - GitHub：[你的GitHub用户名](https://github.com/[你的GitHub用户名])
-- 博客：[你的博客地址](https://[你的博客地址])
+- 博客：https://blog.csdn.net/qq_21006731
 
 ## 个人简介
 
