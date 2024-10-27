@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Markdown to HTML</title>
+     <!-- 引入 marked.js 库 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
@@ -79,8 +80,13 @@
     <div id="content"></div>
 
     <script>
-        document.getElementById('content').innerHTML =
-            marked(document.getElementById('markdown').value);
+     // 确保在DOM完全加载后再执行脚本
+        document.addEventListener('DOMContentLoaded', function() {
+            // 使用 marked 函数转换 Markdown 到 HTML
+            var markdownText = document.getElementById('markdown').value;
+            var htmlContent = marked(markdownText);
+            document.getElementById('content').innerHTML = htmlContent;
+        });
     </script>
 </body>
 </html>
