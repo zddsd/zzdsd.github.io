@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World!</title>
+    <title>Markdown to HTML</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <textarea id="markdown">## Markdown content</textarea>
+    <div id="content"></div>
+
+    <script>
+        document.getElementById('content').innerHTML =
+            marked(document.getElementById('markdown').value);
+    </script>
 </body>
 </html>
