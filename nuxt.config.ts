@@ -18,7 +18,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NODE_ENV === 'production' ? '/api' : '/api',
+      apiBase: process.env.NODE_ENV === 'production' 
+        ? 'https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api'  // 替换为实际的 whois-api 域名
+        : 'http://localhost:3000/api',
       whoisServersPath: 'public/data/whois-servers.json'
     }
   },

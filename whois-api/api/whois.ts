@@ -7,7 +7,7 @@ import express from 'express'
 const app = express()
 const whoisLookup = promisify(whois.lookup)
 
-app.get('/api/whois', async (req, res) => {
+app.get('/whois', async (req, res) => {
   try {
     const domain = req.query.domain as string
     if (!domain) {
@@ -42,4 +42,11 @@ app.get('/api/whois', async (req, res) => {
 })
 
 // Vercel Serverless 入口
-export default app 
+export default app
+
+// 本地开发监听端口
+if (import.meta.url === `file://${process.argv[1]}`) {
+  app.listen(3000, () => {
+    console.log('WHOIS API 本地服务已启动，端口 3000')
+  })
+} 
