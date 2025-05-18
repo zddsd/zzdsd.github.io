@@ -1,13 +1,9 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
   modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/devtools'
+    '@nuxtjs/tailwindcss'
   ],
   app: {
-    baseURL: '/',
     head: {
       title: 'WHOIS 域名查询',
       meta: [
@@ -19,25 +15,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: process.env.NODE_ENV === 'production' 
-        ? 'https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api'  // 替换为实际的 whois-api 域名
+        ? 'https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api'
         : 'http://localhost:3000/api',
       whoisServersPath: 'public/data/whois-servers.json'
     }
   },
-  build: {
-    transpile: ['vue', 'estree-walker']
-  },
-  nitro: {
-    routeRules: {
-      '/**': { isr: false }
-    }
-  },
   typescript: {
     strict: true
-  },
-  vite: {
-    optimizeDeps: {
-      include: ['estree-walker']
-    }
   }
 }) 
