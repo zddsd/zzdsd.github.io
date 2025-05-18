@@ -14,8 +14,17 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: 'https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api',
+      apiBase: '/api',
       whoisServersPath: 'public/data/whois-servers.json'
+    }
+  },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api',
+        changeOrigin: true,
+        prependPath: true
+      }
     }
   },
   typescript: {

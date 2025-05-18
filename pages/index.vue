@@ -26,7 +26,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRuntimeConfig } from '#imports'
 
+const config = useRuntimeConfig()
 const domain = ref('')
 const result = ref('')
 const loading = ref(false)
@@ -41,9 +43,9 @@ async function submitQuery() {
   error.value = ''
   result.value = ''
   try {
-    const res = await fetch(`/api/whois?domain=${encodeURIComponent(domain.value)}`)
+    const res = await fetch(`${config.public.apiBase}/whois?domain=${encodeURIComponent(domain.value)}`)
     const data = await res.json()
-    if (data.success) {
+    if (!data.error) {
       result.value = data.data
     } else {
       error.value = data.message || '查询失败'
