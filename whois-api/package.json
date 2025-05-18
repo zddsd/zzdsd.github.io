@@ -1,0 +1,16 @@
+{
+  "name": "whois-api",
+  "version": "1.0.0",
+  "description": "独立的 WHOIS 查询 API 服务，适用于 Vercel Serverless 部署。",
+  "private": true,
+  "scripts": {
+    "dev": "node server/api/whois.ts",
+    "start": "node server/api/whois.ts"
+  },
+  "dependencies": {
+    "entities": "2.2.0",
+    "estree-walker": "2.0.2",
+    "express": "^4.18.4",
+    "whois": "^2.13.10"
+  }
+}
