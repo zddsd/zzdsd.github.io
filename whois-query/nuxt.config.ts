@@ -24,9 +24,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vue']
   },
-  nitro: {
-    // 移除 preset 和 prerender 配置
-  },
   typescript: {
     strict: true
   }
