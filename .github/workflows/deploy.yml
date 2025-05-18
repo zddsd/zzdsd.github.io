@@ -42,9 +42,6 @@ jobs:
             npm ci
           fi
 
-      - name: Copy WHOIS servers data
-        run: npm run copy-whois-servers
-
       - name: Build
         run: npm run generate
 
