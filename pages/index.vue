@@ -26,9 +26,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRuntimeConfig } from '#imports'
 
-const config = useRuntimeConfig()
+const API_BASE = 'https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api'
 const domain = ref('')
 const result = ref('')
 const loading = ref(false)
@@ -43,15 +42,39 @@ async function submitQuery() {
   error.value = ''
   result.value = ''
   try {
-    const res = await fetch(`${config.public.apiBase}/whois?domain=${encodeURIComponent(domain.value)}`)
+    const url = `${API_BASE}/whois?domain=${encodeURIComponent(domain.value)}`
+    console.log('Requesting URL:', url)
+    
+    const res = await fetch(url, {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    
+    if (!res.ok) {
+      const text = await res.text()
+      console.error('Response not OK:', res.status, text)
+      throw new Error(`HTTP error! status: ${res.status}`)
+    }
+    
+    const contentType = res.headers.get('content-type')
+    if (!contentType || !contentType.includes('application/json')) {
+      const text = await res.text()
+      console.error('Invalid content type:', contentType, text)
+      throw new Error('服务器返回了非 JSON 格式的数据')
+    }
+
     const data = await res.json()
+    console.log('Response data:', data)
+    
     if (!data.error) {
       result.value = data.data
     } else {
       error.value = data.message || '查询失败'
     }
   } catch (e) {
-    error.value = (e as Error).message || '网络错误'
+    console.error('Query error:', e)
+    error.value = e instanceof Error ? e.message : '网络错误'
   } finally {
     loading.value = false
   }
