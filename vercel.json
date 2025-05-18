@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api/:path*"
+      "destination": "https://common-whois-api.vercel.app/api/:path*"
     }
   ],
   "headers": [

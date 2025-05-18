@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const API_BASE = 'https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api'
+const API_BASE = 'https://common-whois-api.vercel.app/api'
 const domain = ref('')
 const result = ref('')
 const loading = ref(false)
