@@ -25,10 +25,7 @@ export default defineNuxtConfig({
     transpile: ['vue']
   },
   nitro: {
-    prerender: {
-      routes: ['/'],
-      ignore: ['/api/**']
-    }
+    // 移除 preset 和 prerender 配置
   },
   typescript: {
     strict: true

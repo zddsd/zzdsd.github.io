@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "WHOIS 域名查询服务",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -15,7 +14,8 @@
   },
   "dependencies": {
     "nuxt": "^3.1.0",
-    "whois": "^2.13.10"
+    "whois": "^2.13.10",
+    "entities": "^4.5.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.0",
