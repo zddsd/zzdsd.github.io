@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/devtools'
   ],
   app: {
+    baseURL: '/',
     head: {
       title: 'WHOIS 域名查询',
       meta: [
@@ -17,12 +18,17 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
+      apiBase: process.env.NODE_ENV === 'production' ? '/api' : '/api',
       whoisServersPath: 'public/data/whois-servers.json'
     }
   },
   build: {
     transpile: ['vue']
+  },
+  nitro: {
+    routeRules: {
+      '/**': { isr: false }
+    }
   },
   typescript: {
     strict: true
