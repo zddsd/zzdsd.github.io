@@ -11,7 +11,7 @@
     "serve": "node dist/api/whois.js"
   },
   "dependencies": {
-    "entities": "1.1.2",
+    "entities": "^3.0.1",
     "estree-walker": "2.0.2",
     "express": "^4.18.4",
     "whois": "^2.13.10"
