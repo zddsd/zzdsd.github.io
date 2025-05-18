@@ -1,245 +1,248 @@
-# WHOIS 工具集
+# WHOIS 域名查询服务
 
-这是一个完整的 WHOIS 信息查询工具集，包含多个相互协作的组件，用于提供可靠、高效的域名 WHOIS 信息查询服务。
+这是一个基于 Nuxt 3 开发的 WHOIS 域名查询服务，提供简单易用的域名 WHOIS 信息查询功能。本项目采用现代化的技术栈，提供高性能、可靠的域名信息查询服务。
 
-## 项目组件
+## 功能特点
 
-### 1. WHOIS 查询服务 (whois-query)
-基于 Nuxt 3 开发的现代化 WHOIS 查询服务，提供用户友好的 Web 界面和 API 接口。
-
-主要特点：
-- 美观的卡片式用户界面
-- 完整的错误处理机制
-- 响应式设计
-- RESTful API 支持
+- 简洁美观的用户界面，采用卡片式设计
+- 支持多种顶级域名的 WHOIS 查询
+- 完整的错误处理和用户提示
+- 响应式设计，完美支持移动端和桌面端
 - 实时查询状态反馈
+- 查询历史记录（可选功能）
+- 支持批量查询（计划中）
 
-详细文档：[whois-query/README.md](whois-query/README.md)
+## 技术栈
 
-### 2. WHOIS 爬虫服务 (whois-crawler)
-用于自动获取和更新 WHOIS 服务器配置信息的爬虫服务。
+- Nuxt 3 - 全栈框架
+- TypeScript - 类型安全
+- TailwindCSS - 现代化 UI 框架
+- Vitest - 单元测试框架
+- Node.js - 运行时环境
+- WHOIS 协议 - 域名信息查询
 
-主要功能：
-- 自动爬取 WHOIS 服务器信息
-- 数据验证和清洗
-- 定期更新配置
-- 错误重试机制
-- 日志记录
-
-详细文档：[whois-crawler/README.md](whois-crawler/README.md)
-
-### 3. 备份服务 (backup)
-用于备份和管理 WHOIS 服务器配置数据的服务。
-
-主要功能：
-- 自动备份配置数据
-- 版本控制
-- 数据恢复
-- 备份验证
-
-## 系统架构
-
-```
-mytools/
-├── whois-query/          # WHOIS 查询服务
-│   ├── pages/           # 前端页面
-│   ├── server/          # API 服务
-│   └── public/          # 静态资源
-├── whois-crawler/        # WHOIS 爬虫服务
-│   ├── src/             # 源代码
-│   └── scripts/         # 爬虫脚本
-└── backup/              # 备份服务
-    ├── data/            # 备份数据
-    └── scripts/         # 备份脚本
-```
-
-## 快速开始
-
-### 环境要求
+## 环境要求
 
 - Node.js >= 16.0.0
 - npm >= 7.0.0
-- 现代浏览器支持
-- 网络连接（用于 WHOIS 查询）
+- 现代浏览器支持（Chrome, Firefox, Safari, Edge 等）
 
-### 安装步骤
+## 目录结构
+
+```
+whois-query/
+├── pages/                # 前端页面
+│   └── index.vue        # 主查询页面
+├── server/              # API 服务端代码
+│   └── api/            # API 路由
+├── public/              # 静态资源
+│   └── data/           # WHOIS 服务器配置
+├── scripts/             # 辅助脚本
+│   └── copy-whois-servers.js  # 配置文件复制脚本
+├── test/                # 单元测试
+├── types/               # TypeScript 类型定义
+├── components/          # Vue 组件
+├── composables/         # 组合式函数
+├── utils/              # 工具函数
+├── package.json         # 项目依赖与脚本
+├── nuxt.config.ts       # Nuxt 配置
+└── .env                # 环境变量配置
+```
+
+## 环境变量配置
+
+创建 `.env` 文件并配置以下环境变量：
+
+```env
+# 开发环境配置
+NODE_ENV=development
+PORT=3000
+
+# 生产环境配置
+NODE_ENV=production
+BASE_URL=https://your-domain.com
+
+# WHOIS 查询配置
+WHOIS_TIMEOUT=10000
+WHOIS_RETRY_COUNT=3
+```
+
+## 安装
 
 1. 克隆仓库：
 ```bash
-git clone https://github.com/your-username/mytools.git
-cd mytools
+git clone https://github.com/your-username/whois-query.git
+cd whois-query
 ```
 
 2. 安装依赖：
 ```bash
-# 安装查询服务依赖
-cd whois-query
-npm install
-
-# 安装爬虫服务依赖
-cd ../whois-crawler
 npm install
 ```
 
-3. 配置环境：
+3. 配置环境变量：
 ```bash
-# 复制环境变量模板
-cp whois-query/.env.example whois-query/.env
-cp whois-crawler/.env.example whois-crawler/.env
-
-# 编辑环境变量配置
+cp .env.example .env
+# 编辑 .env 文件配置必要的环境变量
 ```
-
-### 启动服务
-
-1. 启动 WHOIS 查询服务：
-```bash
-cd whois-query
-npm run dev
-```
-
-2. 启动爬虫服务（可选）：
-```bash
-cd whois-crawler
-npm run start
-```
-
-3. 访问服务：
-- 查询服务：http://localhost:3000
-- API 文档：http://localhost:3000/api/docs
 
 ## 开发指南
 
-### 开发环境设置
+### 开发服务器
 
-1. 代码规范：
+1. 启动开发服务器：
+```bash
+npm run dev
+```
+
+2. 访问开发环境：
+- 打开浏览器访问 `http://localhost:3000`
+- 支持热重载，修改代码后自动更新
+
+### 代码规范
+
 - 使用 ESLint 进行代码检查
 - 使用 Prettier 进行代码格式化
 - 遵循 TypeScript 严格模式
-- 遵循各项目的具体开发规范
+- 组件使用 PascalCase 命名
+- 工具函数使用 camelCase 命名
 
-2. 测试：
+### 测试
+
+1. 运行单元测试：
 ```bash
-# 运行查询服务测试
-cd whois-query
-npm run test
-
-# 运行爬虫服务测试
-cd ../whois-crawler
 npm run test
 ```
 
-### 部署
-
-1. 构建服务：
+2. 运行测试覆盖率报告：
 ```bash
-# 构建查询服务
-cd whois-query
-npm run build
+npm run test:coverage
+```
 
-# 构建爬虫服务
-cd ../whois-crawler
+### 构建
+
+1. 构建生产版本：
+```bash
 npm run build
+```
+
+2. 预览生产版本：
+```bash
+npm run preview
+```
+
+## 部署指南
+
+### 静态托管部署
+
+1. 构建项目：
+```bash
+npm run generate
 ```
 
 2. 部署选项：
-- 静态托管（Vercel、Netlify 等）
-- Docker 容器
-- 自托管服务器
+   - GitHub Pages
+   - Vercel
+   - Netlify
+   - 自托管服务器
 
-## 维护指南
+### Docker 部署
 
-### 日常维护
-
-1. WHOIS 服务器数据更新：
+1. 构建 Docker 镜像：
 ```bash
-# 运行爬虫更新数据
-cd whois-crawler
-npm run update
-
-# 复制更新后的配置
-cd ../whois-query
-npm run copy-whois-servers
+docker build -t whois-query .
 ```
 
-2. 备份管理：
-- 定期检查备份完整性
-- 验证备份数据
-- 清理旧备份
+2. 运行容器：
+```bash
+docker run -p 3000:3000 whois-query
+```
 
-### 监控
+## 性能优化
 
-- 服务健康检查
-- 查询成功率监控
-- 性能指标收集
-- 错误日志分析
+- 使用 Nuxt 的自动代码分割
+- 静态资源压缩和缓存
+- API 响应缓存
+- 查询结果缓存
+- 延迟加载非关键组件
 
 ## 安全考虑
 
 - 输入验证和清理
 - 请求频率限制
 - CORS 配置
+- 错误信息处理
 - 敏感信息过滤
-- 定期安全更新
+
+## 维护指南
+
+### WHOIS 服务器数据更新
+
+1. 更新步骤：
+```bash
+# 1. 运行爬虫服务获取最新数据
+npm run update-whois-servers
+
+# 2. 复制配置文件
+npm run copy-whois-servers
+
+# 3. 验证配置
+npm run validate-config
+
+# 4. 重新构建部署
+npm run build
+```
+
+2. 更新周期建议：
+- 每月更新一次 WHOIS 服务器列表
+- 每周检查配置有效性
+- 每日监控查询成功率
+
+### 日志管理
+
+- 使用 Nuxt 内置日志系统
+- 错误日志记录
+- 查询统计
+- 性能监控
 
 ## 常见问题
 
-### 查询服务问题
+- **Q: 查询无结果或报错？**
+  - 检查 `public/data/whois-servers.json` 是否存在且内容正确
+  - 确认域名后缀是否在支持列表内
+  - 检查网络连接和防火墙设置
+  - 查看服务器日志获取详细错误信息
 
-- **Q: 查询服务无法启动？**
-  - 检查环境变量配置
-  - 确认端口未被占用
-  - 查看错误日志
+- **Q: 如何更新 WHOIS 服务器数据？**
+  - 运行爬虫服务获取最新数据
+  - 使用 `npm run copy-whois-servers` 更新配置
+  - 重新构建并部署项目
 
-- **Q: 查询结果不准确？**
-  - 确认 WHOIS 服务器配置是否最新
+- **Q: 如何本地测试？**
+  - 运行 `npm run dev` 启动开发服务器
+  - 访问 `http://localhost:3000`
+  - 使用测试域名进行查询测试
+
+- **Q: 如何处理查询超时？**
   - 检查网络连接
-  - 验证域名格式
-
-### 爬虫服务问题
-
-- **Q: 爬虫更新失败？**
-  - 检查网络连接
-  - 确认目标服务器可访问
-  - 查看爬虫日志
-
-- **Q: 数据验证失败？**
-  - 检查数据格式
-  - 确认必要字段存在
-  - 验证数据完整性
+  - 调整 WHOIS_TIMEOUT 环境变量
+  - 考虑使用代理服务器
 
 ## 贡献指南
 
 1. Fork 本仓库
-2. 创建特性分支
-3. 提交更改
-4. 推送到分支
-5. 创建 Pull Request
+2. 创建特性分支：`git checkout -b feature/your-feature`
+3. 提交更改：`git commit -am 'Add some feature'`
+4. 推送到分支：`git push origin feature/your-feature`
+5. 提交 Pull Request
 
 ### 开发规范
 
-- 遵循现有代码风格
+- 遵循现有的代码风格
 - 添加必要的测试
-- 更新相关文档
+- 更新文档
 - 确保所有测试通过
 - 提供清晰的提交信息
-
-## 版本历史
-
-### v1.0.0 (2024-03-xx)
-- 初始版本发布
-- 基本 WHOIS 查询功能
-- 爬虫服务集成
-- 备份系统实现
-
-### 计划功能
-- [ ] 批量查询支持
-- [ ] 查询历史记录
-- [ ] 更多域名后缀支持
-- [ ] API 限流保护
-- [ ] 查询结果导出
-- [ ] 爬虫性能优化
-- [ ] 备份自动化
 
 ## 许可证
 
@@ -251,6 +254,17 @@ MIT License
 - 邮箱：[your-email@example.com]
 - GitHub Issues: [项目 Issues 页面]
 
-## 致谢
+## 更新日志
 
-感谢所有为本项目做出贡献的开发者！ 
+### v1.0.0 (2024-03-xx)
+- 初始版本发布
+- 基本 WHOIS 查询功能
+- 响应式界面设计
+- 完整的错误处理
+
+### 计划功能
+- [ ] 批量查询支持
+- [ ] 查询历史记录
+- [ ] 更多域名后缀支持
+- [ ] API 限流保护
+- [ ] 查询结果导出 
