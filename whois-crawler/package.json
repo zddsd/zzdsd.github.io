@@ -1,0 +1,25 @@
+{
+  "name": "whois-crawler",
+  "version": "1.0.0",
+  "description": "WHOIS 服务器爬虫服务",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/crawler.ts",
+    "build": "tsc",
+    "test": "vitest",
+    "update-servers": "cd ../whois-query && npm run update-servers"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.0.0",
+    "vitest": "^0.34.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "whois-query",
+  "version": "1.0.0",
+  "description": "WHOIS 域名查询服务",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "test": "vitest",
+    "copy-whois-servers": "tsx scripts/copy-whois-servers.ts",
+    "update-servers": "node -e \"require('child_process').execSync('cd ' + process.cwd() + '/../whois-crawler && npm start && cd ' + process.cwd() + ' && npm run copy-whois-servers', {stdio: 'inherit'})\""
+  },
+  "dependencies": {
+    "nuxt": "^3.1.0",
+    "whois": "^2.13.10"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^1.0.0",
+    "@nuxtjs/tailwindcss": "^6.0.0",
+    "@types/node": "^20.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^0.34.6",
+    "tsx": "^4.7.0"
+  }
+} 
