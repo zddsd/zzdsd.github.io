@@ -1,65 +1,270 @@
-# 姓名：zhangsj
+# WHOIS 域名查询服务
 
-## 联系信息
+这是一个基于 Nuxt 3 开发的 WHOIS 域名查询服务，提供简单易用的域名 WHOIS 信息查询功能。本项目采用现代化的技术栈，提供高性能、可靠的域名信息查询服务。
 
-- 邮箱：[你的邮箱]
-- GitHub：[你的GitHub用户名](https://github.com/[你的GitHub用户名])
-- 博客：https://blog.csdn.net/qq_21006731
+## 功能特点
 
-## 个人简介
+- 简洁美观的用户界面，采用卡片式设计
+- 支持多种顶级域名的 WHOIS 查询
+- 完整的错误处理和用户提示
+- 响应式设计，完美支持移动端和桌面端
+- 实时查询状态反馈
+- 查询历史记录（可选功能）
+- 支持批量查询（计划中）
 
-[简短介绍你的专业背景、技能特长以及职业目标。例如：]
-我是一名具有多年经验的软件工程师，擅长于前端开发，熟练使用React、Vue等现代JavaScript框架。我对构建高性能、可维护的Web应用程序充满热情，并一直致力于提升用户体验。
+## 技术栈
 
-## 技能概览
+- Nuxt 3 - 全栈框架
+- TypeScript - 类型安全
+- TailwindCSS - 现代化 UI 框架
+- Vitest - 单元测试框架
+- Node.js - 运行时环境
+- WHOIS 协议 - 域名信息查询
 
-- **编程语言**：JavaScript (ES6+), TypeScript, HTML5, CSS3
-- **框架**：React, Vue, Angular, Node.js
-- **工具**：Git, Webpack, Docker
-- **数据库**：MySQL, MongoDB
-- **软技能**：团队合作，项目管理，敏捷开发
+## 环境要求
 
-## 工作经历
+- Node.js >= 16.0.0
+- npm >= 7.0.0
+- 现代浏览器支持（Chrome, Firefox, Safari, Edge 等）
 
-### [公司名称] — [职位名称] `[开始日期] - [结束日期]`
+## 目录结构
 
-- 负责开发和维护公司的Web应用程序。
-- 与跨职能团队合作，使用敏捷开发方法论。
-- 优化现有代码以提高性能和可维护性。
-- 参与代码审查和设计讨论，以确保代码质量。
+```
+whois-query/
+├── pages/                # 前端页面
+│   └── index.vue        # 主查询页面
+├── server/              # API 服务端代码
+│   └── api/            # API 路由
+├── public/              # 静态资源
+│   └── data/           # WHOIS 服务器配置
+├── scripts/             # 辅助脚本
+│   └── copy-whois-servers.js  # 配置文件复制脚本
+├── test/                # 单元测试
+├── types/               # TypeScript 类型定义
+├── components/          # Vue 组件
+├── composables/         # 组合式函数
+├── utils/              # 工具函数
+├── package.json         # 项目依赖与脚本
+├── nuxt.config.ts       # Nuxt 配置
+└── .env                # 环境变量配置
+```
 
-## 教育背景
+## 环境变量配置
 
-### [学校名称] — [学位] `[开始日期] - [结束日期]`
+创建 `.env` 文件并配置以下环境变量：
 
-- 主修课程：[课程1], [课程2], [课程3]等。
-- 毕业设计：[项目名称] - [项目简介]。
+```env
+# 开发环境配置
+NODE_ENV=development
+PORT=3000
 
-## 项目经验
+# 生产环境配置
+NODE_ENV=production
+BASE_URL=https://your-domain.com
 
-### [项目名称] — [项目简介] `[开始日期] - [结束日期]`
+# WHOIS 查询配置
+WHOIS_TIMEOUT=10000
+WHOIS_RETRY_COUNT=3
+```
 
-- 描述项目的目标和你的个人贡献。
-- 使用的技术栈和工具。
-- 项目成果和任何量化的成果（如提高了多少性能，增加了多少用户等）。
+## 安装
 
-## 开源贡献
+1. 克隆仓库：
+```bash
+git clone https://github.com/your-username/whois-query.git
+cd whois-query
+```
 
-- [项目名称]：[简短描述你的贡献]。(https://github.com/[项目链接])
-- [项目名称]：[简短描述你的贡献]。(https://github.com/[项目链接])
+2. 安装依赖：
+```bash
+npm install
+```
 
-## 荣誉与奖项
+3. 配置环境变量：
+```bash
+cp .env.example .env
+# 编辑 .env 文件配置必要的环境变量
+```
 
-- [奖项名称] — [颁发机构] `[年份`
-- [奖项名称] — [颁发机构] `[年份`
+## 开发指南
 
-## 语言能力
+### 开发服务器
 
-- **英语**：流利
-- **其他语言**：[语言] — [水平]
+1. 启动开发服务器：
+```bash
+npm run dev
+```
 
----
+2. 访问开发环境：
+- 打开浏览器访问 `http://localhost:3000`
+- 支持热重载，修改代码后自动更新
 
-[可选] 你可以在简历的底部添加一些个人信息，比如你的兴趣爱好或者个人陈述，但要确保这些信息对你申请的职位是有益的。
+### 代码规范
 
-请记得将上述模板中的占位符（如 `[你的姓名]`、`[公司名称]` 等）替换成你的个人信息。此外，根据你的实际情况，你可以添加或删除某些部分，以最好地展示你的背景和技能。
+- 使用 ESLint 进行代码检查
+- 使用 Prettier 进行代码格式化
+- 遵循 TypeScript 严格模式
+- 组件使用 PascalCase 命名
+- 工具函数使用 camelCase 命名
+
+### 测试
+
+1. 运行单元测试：
+```bash
+npm run test
+```
+
+2. 运行测试覆盖率报告：
+```bash
+npm run test:coverage
+```
+
+### 构建
+
+1. 构建生产版本：
+```bash
+npm run build
+```
+
+2. 预览生产版本：
+```bash
+npm run preview
+```
+
+## 部署指南
+
+### 静态托管部署
+
+1. 构建项目：
+```bash
+npm run generate
+```
+
+2. 部署选项：
+   - GitHub Pages
+   - Vercel
+   - Netlify
+   - 自托管服务器
+
+### Docker 部署
+
+1. 构建 Docker 镜像：
+```bash
+docker build -t whois-query .
+```
+
+2. 运行容器：
+```bash
+docker run -p 3000:3000 whois-query
+```
+
+## 性能优化
+
+- 使用 Nuxt 的自动代码分割
+- 静态资源压缩和缓存
+- API 响应缓存
+- 查询结果缓存
+- 延迟加载非关键组件
+
+## 安全考虑
+
+- 输入验证和清理
+- 请求频率限制
+- CORS 配置
+- 错误信息处理
+- 敏感信息过滤
+
+## 维护指南
+
+### WHOIS 服务器数据更新
+
+1. 更新步骤：
+```bash
+# 1. 运行爬虫服务获取最新数据
+npm run update-whois-servers
+
+# 2. 复制配置文件
+npm run copy-whois-servers
+
+# 3. 验证配置
+npm run validate-config
+
+# 4. 重新构建部署
+npm run build
+```
+
+2. 更新周期建议：
+- 每月更新一次 WHOIS 服务器列表
+- 每周检查配置有效性
+- 每日监控查询成功率
+
+### 日志管理
+
+- 使用 Nuxt 内置日志系统
+- 错误日志记录
+- 查询统计
+- 性能监控
+
+## 常见问题
+
+- **Q: 查询无结果或报错？**
+  - 检查 `public/data/whois-servers.json` 是否存在且内容正确
+  - 确认域名后缀是否在支持列表内
+  - 检查网络连接和防火墙设置
+  - 查看服务器日志获取详细错误信息
+
+- **Q: 如何更新 WHOIS 服务器数据？**
+  - 运行爬虫服务获取最新数据
+  - 使用 `npm run copy-whois-servers` 更新配置
+  - 重新构建并部署项目
+
+- **Q: 如何本地测试？**
+  - 运行 `npm run dev` 启动开发服务器
+  - 访问 `http://localhost:3000`
+  - 使用测试域名进行查询测试
+
+- **Q: 如何处理查询超时？**
+  - 检查网络连接
+  - 调整 WHOIS_TIMEOUT 环境变量
+  - 考虑使用代理服务器
+
+## 贡献指南
+
+1. Fork 本仓库
+2. 创建特性分支：`git checkout -b feature/your-feature`
+3. 提交更改：`git commit -am 'Add some feature'`
+4. 推送到分支：`git push origin feature/your-feature`
+5. 提交 Pull Request
+
+### 开发规范
+
+- 遵循现有的代码风格
+- 添加必要的测试
+- 更新文档
+- 确保所有测试通过
+- 提供清晰的提交信息
+
+## 许可证
+
+MIT License
+
+## 联系方式
+
+- 项目维护者：[Your Name]
+- 邮箱：[your-email@example.com]
+- GitHub Issues: [项目 Issues 页面]
+
+## 更新日志
+
+### v1.0.0 (2024-03-xx)
+- 初始版本发布
+- 基本 WHOIS 查询功能
+- 响应式界面设计
+- 完整的错误处理
+
+### 计划功能
+- [ ] 批量查询支持
+- [ ] 查询历史记录
+- [ ] 更多域名后缀支持
+- [ ] API 限流保护
+- [ ] 查询结果导出 
