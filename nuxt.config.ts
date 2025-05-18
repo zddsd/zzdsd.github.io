@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     }
   },
   build: {
-    transpile: ['vue']
+    transpile: ['vue', 'estree-walker']
   },
   nitro: {
     routeRules: {
@@ -34,5 +34,10 @@ export default defineNuxtConfig({
   },
   typescript: {
     strict: true
+  },
+  vite: {
+    optimizeDeps: {
+      include: ['estree-walker']
+    }
   }
 }) 

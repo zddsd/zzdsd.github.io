@@ -15,8 +15,7 @@
   "dependencies": {
     "nuxt": "^3.17.0",
     "whois": "^2.13.10",
-    "entities": "2.2.0",
-    "estree-walker": "2.0.2"
+    "entities": "2.2.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.0",
@@ -26,8 +25,5 @@
     "typescript": "^5.0.0",
     "vitest": "^0.34.6",
     "tsx": "^4.7.0"
-  },
-  "overrides": {
-    "estree-walker": "2.0.2"
   }
 } 
