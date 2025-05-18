@@ -13,7 +13,6 @@
     "update-servers": "node -e \"require('child_process').execSync('cd ' + process.cwd() + '/../whois-crawler && npm start && cd ' + process.cwd() + ' && npm run copy-whois-servers', {stdio: 'inherit'})\""
   },
   "dependencies": {
-    "entities": "^1.1.2",
     "html-entities": "^2.6.0",
     "nuxt": "^3.17.0",
     "whois": "^2.13.10"
