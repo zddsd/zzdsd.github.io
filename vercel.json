@@ -2,22 +2,12 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api/:path*",
-      "headers": [
-        {
-          "key": "Accept",
-          "value": "application/json"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/json"
-        }
-      ]
+      "destination": "https://common-whois-pcaj4b4wb-zzdsds-projects.vercel.app/api/:path*"
     }
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
