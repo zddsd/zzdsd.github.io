@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: whois-query
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,22 +30,18 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: whois-query/package-lock.json
+          cache-dependency-path: |
+            whois-query/package-lock.json
+            whois-query/package.json
 
       - name: Install dependencies
-        run: |
-          cd whois-query
-          npm ci
+        run: npm ci
 
       - name: Copy WHOIS servers data
-        run: |
-          cd whois-query
-          npm run copy-whois-servers
+        run: npm run copy-whois-servers
 
       - name: Build
-        run: |
-          cd whois-query
-          npm run generate
+        run: npm run generate
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
